@@ -12,11 +12,10 @@ plot_lines <-
   function(m, b, colors = grDevices::rainbow(n = nrow(m))) {
     browser()
     # Get intercepts and slopes
-    params <- cbind(m, b) %>% apply(MARGIN = 1, function(x)
-      c(-x[1] / x[2], ifelse(x[2] == 0, x[3] / x[1], x[3] / x[2]))) %>% #Divide by x coef if y coef is 0 (vertical line) -x intercept in latter case
-      t() %>%
-      as.data.frame()
-    names(params) <- c("slope", "intercept")
+    params <-
+      tibble::tibble(x = parmas[1, ], y = params[, 2], b = b) %>%
+      dplyr::transmute(slope = -x / y, intercept = ifelse(y = 0, b / x, b /
+                                                            y))
 
     m <- setNames(as.data.frame(m), nm = c("x", "y"))
 
@@ -24,9 +23,9 @@ plot_lines <-
     out <- ggplot2::ggplot(data = m, ggplot2::aes(x = x, y = y)) +
       #ggplot2::geom_point(alpha = .5) +
       ggplot2::geom_abline(
-      slope = params$slope,
-      intercept = params$intercept,
-      color = colors
-    )
+        slope = params$slope,
+        intercept = params$intercept,
+        color = colors
+      )
     out
   }

@@ -19,9 +19,7 @@ plot_mat <- function(m, color = "blue"){
   #Set default color if invalid
   color <- ifelse(grepl("#", color) | color %in% colors(), color, "blue")
 
-  m <- m %>% t() %>%
-    tibble::as_tibble(.name_repair = "minimal") %>%
-    setNames(., nm = c("x", "y"))
+  m <- tidy_mat(m)
 
  xlim <- c(-max(abs(m$x)), max(abs(m$x)))
  ylim <- c(-max(abs(m$y)), max(abs(m$y)))

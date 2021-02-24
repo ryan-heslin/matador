@@ -11,7 +11,7 @@
 #' @examples
 plot_transform <- function(m, trans, before = "blue", after = "red"){
 
-  image <- m %*% trans
+  image <- trans %*% m
 
   p1 <- matador::plot_trans(m, color = before)
   p2 <- matador::plot_mat(image, color = after)
