@@ -6,7 +6,9 @@
 #' @return The composition of the transformations (i.e., the product of multiplying the matrices in order)
 #' @export
 #'
-#' @examples
-compose_trans <- function(mats){
+#' @examples a <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3)
+#' b <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2)
+#' compose(list(b,a))
+compose_trans <- function(mats) {
   purrr::reduce(mats, `*`)
 }

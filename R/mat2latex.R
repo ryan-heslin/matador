@@ -7,12 +7,10 @@
 #'
 #' @examples
 mat2latex <- function(m){
-  out <- apply(m, MARGIN = 1, function(x) paste(x, collapse = " & ") %>% paste0(., "\\\\"))
-  cat("\\begin{bmatrix}\n")
+  out <- apply(m, MARGIN = 1, function(x) paste(x, collapse = " & ") %>% paste0(., "\n"))
 
-  #Print code
-  for (line in out){
-    cat(line, "\n")
-  }
+  #PRint output
+  cat("\\begin{bmatrix}\n")
+  cat(out)
   cat("\\end{bmatrix}\n")
 }
