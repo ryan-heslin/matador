@@ -2,20 +2,33 @@
 % Please edit documentation in R/plot_lines.R
 \name{plot_lines}
 \alias{plot_lines}
-\title{plot_lines}
+\title{Plot the Lines of the Matrix of a System of Equations}
 \usage{
 plot_lines(m, b, colors = grDevices::rainbow(n = nrow(m)))
 }
 \arguments{
-\item{m}{An n x 2 matrix representing a system of equations in n dimensions}
+\item{m}{An \emph{n} x 2 matrix representing a system of equations in n dimensions}
 
-\item{b}{An n x 1 matrix or atomic vector representing the solutions to the equations of m}
+\item{b}{An \emph{n} x 1 matrix or atomic vector representing the solutions to the equations of m}
 
-\item{colors}{Optional vector of n distinct colors, one for each equation in m, reading downward. If not provided, colors are chosen automatically}
+\item{colors}{Optional vector of \emph{n} distinct colors for the lines, one for each equation in m, reading downward. If not provided, colors are chosen automatically.}
 }
 \value{
-
+A ggplot object depicting the lines of the equations.
 }
 \description{
-plot_lines
+Plot the Lines of the Matrix of a System of Equations
+}
+\examples{
+m1 <- matrix(c(1,3, 2, 4))
+m2 <- matrix(1, 3, 2, 6)
+# Consistent system
+plot_lines(m= m1, b = c(2, 0))
+# Inconsistent system
+plot_lines(m = m2, b = c(5, 7))
+# Linearly dependent system - only one line appears because there are infinitely many solutions
+plot_lines(m = m2, b = c(1, 2))
+Plot many equations at once
+m3 <- matrix(sample(-10:10, 10), nrow = 5)
+plot_lines(m3, b = -2:2)
 }

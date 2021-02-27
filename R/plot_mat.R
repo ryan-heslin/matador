@@ -24,7 +24,7 @@ plot_mat <- function(m, color = "blue") {
   xlim <- c(-max(abs(m$x)), max(abs(m$x)))
   ylim <- c(-max(abs(m$y)), max(abs(m$y)))
 
-  ggplot2::ggplot(data = m, ggplot2::aes(x = x, y = y)) +
+  out <- ggplot2::ggplot(data = m, ggplot2::aes(x = x, y = y)) +
     ggplot2::geom_segment(
       ggplot2::aes(
         xend = x,
@@ -37,9 +37,9 @@ plot_mat <- function(m, color = "blue") {
       arrow.fill = color,
       color = color,
       size = 1
-    ) +
-    ggplot2::geom_vline(xintercept = 0) +
-    ggplot2::geom_hline(yintercept = 0) +
-    ggplot2::lims(x = xlim, y = ylim) +
-    ggplot2::theme(axis.text.y = ggplot2::element_text(angle = 90))
+    )
+    ggplot2::lims(x = xlim, y = ylim)
+
+
+    out + make_axes(p)
 }

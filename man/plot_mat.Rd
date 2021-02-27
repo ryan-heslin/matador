@@ -9,7 +9,7 @@ plot_mat(m, color = "blue")
 \arguments{
 \item{m}{A two-row matrix with any number of columns. Rows are assumed to represent dimensions}
 
-\item{color}{Color to use when drawing the matrix vectors}
+\item{color}{Color to use when drawing the matrix vectors. may be hexadecimal.}
 }
 \value{
 A ggplot object plotting each vector encoded in the provided matrix

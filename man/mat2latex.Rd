@@ -2,8 +2,7 @@
 % Please edit documentation in R/mat2latex.R
 \name{mat2latex}
 \alias{mat2latex}
-\title{mat2latex
-Converts an R matrix object to a representation in Latex code}
+\title{Convert an R Matrix Object to LaTeX Code}
 \usage{
 mat2latex(m)
 }
@@ -11,9 +10,12 @@ mat2latex(m)
 \item{m}{An R matrix object of any dimension}
 }
 \value{
-Latex code for printing the matrix
+Latex code for printing the matrix. To render the code in an RMarkdown document, call the funciton in a chunk with  the \code{results = "asis"} option.s
 }
 \description{
-mat2latex
-Converts an R matrix object to a representation in Latex code
+Convert an R Matrix Object to LaTeX Code
+}
+\examples{
+#Large matrices are not difficult to process.
+mat2latex(as.matrix(mtcars))
 }
