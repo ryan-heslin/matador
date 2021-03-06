@@ -2,19 +2,16 @@
 % Please edit documentation in R/geom_abline2.R
 \name{geom_abline2}
 \alias{geom_abline2}
-\title{geom_abline2}
+\title{Process Parameters for both Vertical and Non-Vertical Lines}
 \usage{
-geom_abline2(...)
+geom_abline2(slope, intercept, color)
 }
 \arguments{
-\item{...}{Arguments to geom_abline. Only modified if slope = Inf; otherwise passed on directly to geom_abline}
+\item{color}{}
 }
 \value{
 
 }
 \description{
-A wrapper to geom_abline intended to handle vertical lines (slope undefined). If geom_abline2 detects a slope argument of -Inf, it
-it treats the intercept argument as an x-intercept, converts the call to a call to geom_vline, and evaluates it.
-If no intercept is supplied, it uses geom_abline's default value of 0. Otherwise it evaluates
-the call normally. Errors will result if the slope argument is Inf but is not named.
+Process Parameters for both Vertical and Non-Vertical Lines
 }

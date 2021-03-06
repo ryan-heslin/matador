@@ -7,6 +7,6 @@
 #'
 #'
 #' @examples
-size_ticks <- function(breaks, span = .05){
-  (max(breaks)-min(breaks)) * span
+size_ticks <- function(breaks, span = .0125){
+  (max(breaks, na.rm = TRUE)-min(breaks, na.rm = TRUE)) * span
 }

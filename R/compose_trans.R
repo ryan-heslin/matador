@@ -9,6 +9,12 @@
 #' @examples a <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3)
 #' b <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2)
 #' compose(list(b,a))
+#' #Matrix and inverse gives the identity
+#' c <- matrix(c(5, 9, 7, 2), nrow = 2)
+#' compose_trans(c, solve(c))
 compose_trans <- function(mats) {
-  purrr::reduce(mats, `*`)
+  if(!all(purr::map_lgl(mats, mode) == "numeric")){
+    stop("Cannot compute product of non-numeric matrices.")
+  }
+  purrr::reduce(mats, `%*%`)
 }

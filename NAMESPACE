@@ -2,6 +2,8 @@
 
 export("%>%")
 export(compose_trans)
+export(even_lims)
+export(make_axes)
 export(mat2latex)
 export(plot_lines)
 export(plot_mat)

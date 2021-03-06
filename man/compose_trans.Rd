@@ -14,10 +14,13 @@ per the conventional definition of matrix multiplication. Vectors may also be in
 The composition of the transformations (i.e., the product of multiplying the matrices in order)
 }
 \description{
-Compose a Series of Matrix Transformations
+This simple function multiplies out a list of matrices, yielding the composition of the transformations.
 }
 \examples{
 a <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3)
 b <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2)
 compose(list(b,a))
+#Matrix and inverse gives the identity
+c <- matrix(c(5, 9, 7, 2), nrow = 2)
+compose_trans(c, solve(c))
 }

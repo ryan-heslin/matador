@@ -21,9 +21,6 @@ plot_mat <- function(m, color = "blue") {
 
   m <- tidy_mat(m)
 
-  xlim <- c(-max(abs(m$x)), max(abs(m$x)))
-  ylim <- c(-max(abs(m$y)), max(abs(m$y)))
-
   out <- ggplot2::ggplot(data = m, ggplot2::aes(x = x, y = y)) +
     ggplot2::geom_segment(
       ggplot2::aes(
@@ -37,9 +34,10 @@ plot_mat <- function(m, color = "blue") {
       arrow.fill = color,
       color = color,
       size = 1
-    )
-    ggplot2::lims(x = xlim, y = ylim)
+    ) +
+    ggplot2::scale_x_continuous(limits = even_lims) +
+    ggplot2::scale_y_continuous(limits = even_lims)
 
 
-    out + make_axes(p)
+    out + make_axes(p = out)
 }
