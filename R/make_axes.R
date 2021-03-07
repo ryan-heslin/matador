@@ -65,6 +65,7 @@ make_axes <- function(p, x_int = 0, y_int = 0) {
         ggplot2::aes(
           x = x_int - (2 *y_off),
           y = ybreaks,
+          hjust =1,
           label = as.character(ybreaks)
         )
       ),

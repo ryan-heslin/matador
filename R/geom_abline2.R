@@ -1,10 +1,10 @@
 #' Process Parameters for both Vertical and Non-Vertical Lines
 #'
-#' @param slope
-#' @param intercept
-#' @param color
+#' @param slope Argument to geom_abline. If infinite, passed to geom_vline instead.
+#' @param intercept Argument to geom_abline. Treated as geom_vline's x-intercept argument if slope is infinite.
+#' @param color Argument to either function
 #'
-#' @return
+#' @return a geom_abline or geom_vline object, depending on the arguments used
 #'
 #'
 #' @examples

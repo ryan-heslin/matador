@@ -29,5 +29,5 @@ plot_transform <- function(m = diag(nrow =2) , trans, before = "blue", after = "
   p1 <- matador::plot_mat(m, color = before)
   p2 <- matador::plot_mat(image, color = after)
 
-  gridExtra::grid.arrange(p1, p2, ncol = 2)
+  gridExtra::grid.arrange(p1, p2, ncol = 2, left = "Before", right = "After")
 }

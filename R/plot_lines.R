@@ -44,7 +44,7 @@ plot_lines <-
                        intercept = dplyr::if_else(y == 0, b / x, b /
                                                     y), color = colors[1:length(b)])
 
-    m <- setNames(as.data.frame(m), c("x", "y"))
+    m <- stats::setNames(as.data.frame(m), c("x", "y"))
 
     # Annoying vertical line special case
     if (all(is.finite(params$slope))){
