@@ -4,13 +4,17 @@
 \alias{mat2latex}
 \title{Convert an R Matrix Object to LaTeX Code}
 \usage{
-mat2latex(m)
+mat2latex(m, sink = FALSE)
 }
 \arguments{
 \item{m}{An R matrix object of any dimension}
+
+\item{sink}{Logical determining output mode. If FALSE, the default, mat2latex prints the LaTeX code directly to console. If TRUE,
+it returns the code without printing, a la R's sink function.}
 }
 \value{
-Latex code for printing the matrix. To render the code in an RMarkdown document, call the funciton in a chunk with  the \code{results = "asis"} option.s
+Latex code for printing the matrix. To render the code in an RMarkdown document, call the function in a chunk with  the \code{results = "asis"} option.
+Alternately, set sink to FALSE, store the output in an object, and reference it in an R code chunk.
 }
 \description{
 Convert an R Matrix Object to LaTeX Code
@@ -18,4 +22,8 @@ Convert an R Matrix Object to LaTeX Code
 \examples{
 #Large matrices are not difficult to process.
 mat2latex(as.matrix(mtcars))
+#Make a list storing code to print each element of a matrix equation
+A <- matrix(-1:2, nrow = 2)
+B <- matrix(rep(0.5, 4), nrow =2)
+C <- diag(x = 4, nrow =2)
 }

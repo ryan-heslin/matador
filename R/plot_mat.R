@@ -21,6 +21,8 @@ plot_mat <- function(m, color = "blue") {
 
   m <- tidy_mat(m)
 
+  xlim <- even_lims(m$x)
+  ylim <- even_lims(m$y)
   out <- ggplot2::ggplot(data = m, ggplot2::aes(x = x, y = y)) +
     ggplot2::geom_segment(
       ggplot2::aes(
@@ -35,8 +37,7 @@ plot_mat <- function(m, color = "blue") {
       color = color,
       size = 1
     ) +
-    ggplot2::scale_x_continuous(limits = even_lims) +
-    ggplot2::scale_y_continuous(limits = even_lims)
+    ggplot2::coord_fixed(ratio = 1, xlim = xlim, ylim = ylim)
 
 
     out + make_axes(p = out)

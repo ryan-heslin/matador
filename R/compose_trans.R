@@ -13,7 +13,7 @@
 #' c <- matrix(c(5, 9, 7, 2), nrow = 2)
 #' compose_trans(c, solve(c))
 compose_trans <- function(mats) {
-  if(!all(purr::map_lgl(mats, mode) == "numeric")){
+  if(!all(purrr::map_chr(mats, mode) == "numeric")){
     stop("Cannot compute product of non-numeric matrices.")
   }
   purrr::reduce(mats, `%*%`)

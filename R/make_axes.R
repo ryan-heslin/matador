@@ -2,8 +2,9 @@
 #' @description This function creates vertical and horizontal axes that may be added to a ggplot object. The intercepts for either or each may be specified.
 #' Note the axes will not appear if they fall outside the limits of your plot.
 #' This function is partly based on this StackOverflow post: https://stackoverflow.com/questions/17753101/center-x-and-y-axis-with-ggplot2
-#' @param x x-intercept of the y-axis, 0 by default
-#' @param y y-intercept of the x-axis, 0 by default
+#' @param p A ggplot object
+#' @param x x-intercept of the y-axis. Defaults to 0
+#' @param y y-intercept of the x-axis. Defaults to 0.
 #'
 #' @return A list of four geom_segment objects, each corresponding to one half-axis, that may be added to a ggplot object.
 #' @export
@@ -18,7 +19,7 @@ make_axes <- function(p, x_int = 0, y_int = 0) {
       y = y_int
     )
 
-  #TODO handle different breaks lengths
+
   breaks <-
     list(
       x = tibble(

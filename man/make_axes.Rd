@@ -7,9 +7,11 @@
 make_axes(p, x_int = 0, y_int = 0)
 }
 \arguments{
-\item{x}{x-intercept of the y-axis, 0 by default}
+\item{p}{A ggplot object}
 
-\item{y}{y-intercept of the x-axis, 0 by default}
+\item{x}{x-intercept of the y-axis. Defaults to 0}
+
+\item{y}{y-intercept of the x-axis. Defaults to 0.}
 }
 \value{
 A list of four geom_segment objects, each corresponding to one half-axis, that may be added to a ggplot object.

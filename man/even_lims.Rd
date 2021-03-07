@@ -10,7 +10,7 @@ even_lims(vec)
 \item{vec}{A vector, typically a row or column represnting a dimension to plot}
 }
 \value{
-A length 2 vector consisting of the negative and positive of the value of vec with the greatest absolute value.
+A length 2 vector consisting of the negative and positive of the value of vec with the greatest absolute value, respectively rounded down and up.
 }
 \description{
 Set Even Limits Based on Data Values

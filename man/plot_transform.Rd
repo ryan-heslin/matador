@@ -4,10 +4,11 @@
 \alias{plot_transform}
 \title{Plot a Matrix Before and After a Linear Transformation}
 \usage{
-plot_transform(m, trans, before = "blue", after = "red")
+plot_transform(m = diag(nrow = 2), trans, before = "blue", after = "red")
 }
 \arguments{
-\item{m}{A matrix of any dimension for which multiplication by trans (or, if trans is a list, its composition) is defined}
+\item{m}{A matrix of any dimension for which multiplication by trans (or, if trans is a list, its composition) is defined.
+By default, the 2 x 2 identity.}
 
 \item{trans}{A 2 x m matrix representing the transformation to apply to m, for which multiplicaiton by m is defined.. Alternately, a list of matrices for which multiplication is defined in the conventional
 order. If such a list is passed, the leftmost matrix (the final transformation) must have two dimensions.}
