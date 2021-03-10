@@ -7,7 +7,7 @@
 mat_pows(m, pows)
 }
 \arguments{
-\item{m}{A square (n x n) numeric matrix}
+\item{m}{An \emph{n} x \emph{n} numeric matrix}
 
 \item{pows}{Numeric vector of distinct powers to raise m to. Must be positive natural numbers.}
 }
@@ -15,7 +15,7 @@ mat_pows(m, pows)
 A list of equal length to pows, each entry of which corresponds to that power of m.
 }
 \description{
-Compute Powers of a Matrix
+This function takes a square matrix and exponentiates it.
 }
 \examples{
 m1 <- diag(x=3, nrow =4)

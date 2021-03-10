@@ -2,22 +2,25 @@
 % Please edit documentation in R/plot_mat.R
 \name{plot_mat}
 \alias{plot_mat}
-\title{Title}
+\title{Plot The Vectors of a Matrix}
 \usage{
 plot_mat(m, color = "blue", fix_coords = FALSE)
 }
 \arguments{
-\item{m}{A two-row matrix with any number of columns. Rows are assumed to represent dimensions}
+\item{m}{A 2 x \emph{m} matrix. Rows are assumed to represent dimensions.}
 
-\item{color}{Color to use when drawing the matrix vectors. may be hexadecimal.}
+\item{color}{Color to use when drawing the matrix vectors. May be specified as a  hexadecimal.}
 
-\item{fix_coords}{Logical determiniing the plot's aspect ratio. If TRUE,}
+\item{fix_coords}{Logical determining the plot's aspect ratio. If TRUE, the plot is scaled to have an aspect ratio of 1,
+meaning the  \emph{x} and \emph{y} dimensions are scaled exactly the same. Note this will distort the size of the plot and will
+result in unreadable plots if the ranges of \emph{x} and \emph{y} are disparate.
+Defaults to FALSE.}
 }
 \value{
-A ggplot object plotting each vector encoded in the provided matrix
+A ggplot object plotting each vector encoded in the provided matrix.
 }
 \description{
-Title
+This function plots the column vectors of a two-dimensional matrix.
 }
 \examples{
 plot_mat(rbind(-10:0, 0:10))

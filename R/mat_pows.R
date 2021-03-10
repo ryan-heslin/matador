@@ -1,6 +1,6 @@
 #' Compute Powers of a Matrix
-#'
-#' @param m A square (n x n) numeric matrix
+#' @description This function takes a square matrix and exponentiates it.
+#' @param m An _n_ x _n_ numeric matrix
 #' @param pows Numeric vector of distinct powers to raise m to. Must be positive natural numbers.
 #'
 #' @return A list of equal length to pows, each entry of which corresponds to that power of m.

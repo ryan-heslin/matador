@@ -3,8 +3,8 @@
 #' Note the axes will not appear if they fall outside the limits of your plot.
 #' This function is partly based on this StackOverflow post: https://stackoverflow.com/questions/17753101/center-x-and-y-axis-with-ggplot2
 #' @param p A ggplot object
-#' @param x_int x-intercept of the y-axis. Defaults to 0
-#' @param y_int y-intercept of the x-axis. Defaults to 0.
+#' @param x_int X-intercept of the y-axis. Defaults to 0
+#' @param y_int Y-intercept of the x-axis. Defaults to 0.
 #'
 #' @return A list of four geom_segment objects, each corresponding to one half-axis, that may be added to a ggplot object.
 #' @export

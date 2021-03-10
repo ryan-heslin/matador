@@ -9,9 +9,9 @@ make_axes(p, x_int = 0, y_int = 0)
 \arguments{
 \item{p}{A ggplot object}
 
-\item{x_int}{x-intercept of the y-axis. Defaults to 0}
+\item{x_int}{X-intercept of the y-axis. Defaults to 0}
 
-\item{y_int}{y-intercept of the x-axis. Defaults to 0.}
+\item{y_int}{Y-intercept of the x-axis. Defaults to 0.}
 }
 \value{
 A list of four geom_segment objects, each corresponding to one half-axis, that may be added to a ggplot object.

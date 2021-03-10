@@ -7,13 +7,15 @@
 even_lims(vec)
 }
 \arguments{
-\item{vec}{A vector, typically a row or column represnting a dimension to plot}
+\item{vec}{A vector, typically a row or column representing a dimension to plot}
 }
 \value{
-A length 2 vector consisting of the negative and positive of the value of vec with the greatest absolute value, respectively rounded down and up.
+A length 2 vector consisting of the negative and positive of the value of vec with the greatest absolute value,
+respectively rounded down and up.
 }
 \description{
-Set Even Limits Based on Data Values
+This function takes a numeric vector and returns a range of the negative and positive of the element with the highest absolute
+value. It is intended to set even limits on plots when called on the breaks or data values corresponding to an aesthetic
 }
 \examples{
 # Create four-quadrant plot

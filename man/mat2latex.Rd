@@ -14,10 +14,11 @@ it returns the code without printing, a la R's sink function.}
 }
 \value{
 Latex code for printing the matrix. To render the code in an RMarkdown document, call the function in a chunk with  the \code{results = "asis"} option.
-Alternately, set sink to FALSE, store the output in an object, and reference it in an R code chunk.
+Alternately, set sink to FALSE, store the output in an object, and reference the object in an R code chunk.
 }
 \description{
-Convert an R Matrix Object to LaTeX Code
+This function converts an R matrix object into LaTeX code for rendering it in a LaTeX environment. It is intended for use in Rmarkdown,
+as a convenience for translating calculations done in R code chunks into LaTeX.
 }
 \examples{
 #Large matrices are not difficult to process.

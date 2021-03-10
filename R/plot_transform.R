@@ -1,15 +1,17 @@
 #' Plot a Matrix Before and After a Linear Transformation
-#'
+#' @description This function plots the vectors within a matrix, multiplies the matrix by the provided transformation,
+#' then plots the result. It makes it easy to visualize even complex linear transformations on the two-dimensional plane.
 #' @param m A matrix of any dimension for which multiplication by trans (or, if trans is a list, its composition) is defined.
 #' By default, the 2 x 2 identity.
-#' @param trans A 2 x m matrix representing the transformation to apply to m, for which multiplication by m is defined.. Alternately, a list of matrices for which multiplication is defined in the conventional
+#' @param trans A 2 x m matrix representing the transformation to apply to m, for which multiplication by m is defined.
+#'  Alternately, a list of matrices for which multiplication is defined in the conventional
 #' order. If such a list is passed, the leftmost matrix (the final transformation) must have two dimensions.
 #' @param before Color to use plotting the vectors of m. May be hexadecimal.
 #' @param after Color to use when potting the vectors of the transformed matrix. May be hexadecimal.
-#' @param fix_coords Logical indicating whether to use a fixed aspect ratio, which will force the x and y dimensions to a common scale Note this will result
-#' in unreadable plots if one dimension has a much larger range than the other.
-#' @return A side-by-side plot, the first panel depicting the original matrix, the second the matrix after its transformation. If m is not two-dimensional, only
-#' a plot of the image.
+#' @param fix_coords Passed on tho plot_mat.
+#' @return A side-by-side plot, the first panel depicting the original matrix, the second the matrix after its transformation.
+#'  If _m_is not two-dimensional, only
+#' a plot of the image of the transformation.
 #' @export
 #'
 #' @examples #45-degree rotation counterclockwise

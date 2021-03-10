@@ -1,9 +1,12 @@
-#' Title
-#'
-#' @param m A two-row matrix with any number of columns. Rows are assumed to represent dimensions
-#' @param color Color to use when drawing the matrix vectors. may be hexadecimal.
-#' @param fix_coords Logical determiniing the plot's aspect ratio. If TRUE,
-#' @return A ggplot object plotting each vector encoded in the provided matrix
+#' Plot The Vectors of a Matrix
+#' @description This function plots the column vectors of a two-dimensional matrix.
+#' @param m A 2 x _m_ matrix. Rows are assumed to represent dimensions.
+#' @param color Color to use when drawing the matrix vectors. May be specified as a  hexadecimal.
+#' @param fix_coords Logical determining the plot's aspect ratio. If TRUE, the plot is scaled to have an aspect ratio of 1,
+#' meaning the  _x_ and _y_ dimensions are scaled exactly the same. Note this will distort the size of the plot and will
+#' result in unreadable plots if the ranges of _x_ and _y_ are disparate.
+#' Defaults to FALSE.
+#' @return A ggplot object plotting each vector encoded in the provided matrix.
 #' @export
 #'
 #' @examples plot_mat(rbind(-10:0, 0:10))

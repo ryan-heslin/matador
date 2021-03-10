@@ -1,7 +1,8 @@
 #' Compose a Series of Matrix Transformations
-#'@description This simple function multiplies out a list of matrices, yielding the composition of the transformations.
-#' @param mats A list of matrices that can be multiplied in the conventional order, i.e., A(B(C)). The range of each matrix must equal the domain of the matrix to its right,
-#' per the conventional definition of matrix multiplication. Vectors may also be included if represented as n x 1 matrices, assuming they obey the above constraint.
+#'@description This function multiplies out a list of matrices and/or vectors, yielding the composition of the transformations.
+#' @param mats A list of matrices and/or vectors that can be multiplied in the conventional order, i.e., A(B(C)). Each matrix must have as many columns as the matrix
+#' to its right has rows, per the conventional definition of matrix multiplication.
+#' Vectors may also be included in the sequence, assuming they obey the above constraint.
 #'
 #' @return The composition of the transformations (i.e., the product of multiplying the matrices in order)
 #' @export

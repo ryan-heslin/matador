@@ -1,9 +1,10 @@
 #' Plot the Lines of the Matrix of a System of Equations
-#'
+#' @description This function plots the system of equations represented by a matrix. For each row, it plots a line representing every possible
+#' two-dimensional vector that would satisfy the equation.
 #' @param m An _n_ x 2 matrix representing a system of equations in n dimensions
-#' @param b An _n_ x 1 matrix or atomic vector representing the solutions to the equations of m. If omitted, a vector of n 0s isused, as in a homoegeneous system of equations
+#' @param b An _n_ x 1 matrix or atomic vector representing the solutions to the equations of _m_. If omitted, a vector of n 0s isused, as in a homoegeneous system of equations
 #' @param colors Optional vector of colors for the lines, one for each equation in m, reading downward. If not provided, colors are chosen automatically. If shorter than b,
-#' it is recycled by R's usual rules. If longer,extra colors are ignored.
+#' it is recycled per R's usual rules. If longer,extra colors are ignored.
 #'
 #' @return A ggplot object depicting the lines of the equations.
 #' @export
