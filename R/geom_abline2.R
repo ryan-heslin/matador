@@ -6,8 +6,7 @@
 #'
 #' @return a geom_abline or geom_vline object, depending on the arguments used
 #'
-#'
-#' @examples
+
 geom_abline2 <- function(slope, intercept, color){
   if(!is.finite(slope)){
     return(ggplot2::geom_vline(xintercept = intercept, color = color))

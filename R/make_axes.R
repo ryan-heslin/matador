@@ -3,13 +3,13 @@
 #' Note the axes will not appear if they fall outside the limits of your plot.
 #' This function is partly based on this StackOverflow post: https://stackoverflow.com/questions/17753101/center-x-and-y-axis-with-ggplot2
 #' @param p A ggplot object
-#' @param x x-intercept of the y-axis. Defaults to 0
-#' @param y y-intercept of the x-axis. Defaults to 0.
+#' @param x_int x-intercept of the y-axis. Defaults to 0
+#' @param y_int y-intercept of the x-axis. Defaults to 0.
 #'
 #' @return A list of four geom_segment objects, each corresponding to one half-axis, that may be added to a ggplot object.
 #' @export
 #'
-#' @examples
+#'
 make_axes <- function(p, x_int = 0, y_int = 0) {
   seg_params <-
     tibble::tibble(
@@ -24,12 +24,12 @@ make_axes <- function(p, x_int = 0, y_int = 0) {
     list(
       x = tibble(
         xbreaks = ggplot2::ggplot_build(p)$layout$panel_params[[1]]$x$breaks %>%
-          {.[stats::complete.cases(.)]},
+          {.[stats::complete.cases(.) & . != x_int]},
         y_int
       ),
       y = tibble(
         ybreaks = ggplot2::ggplot_build(p)$layout$panel_params[[1]]$y$breaks %>%
-          {.[stats::complete.cases(.)]},
+          {.[stats::complete.cases(.) & . != y_int]},
         x_int
       )
     )
@@ -74,6 +74,7 @@ make_axes <- function(p, x_int = 0, y_int = 0) {
         ggplot2::aes(
           x = xbreaks,
           y = y_int - (2 *x_off),
+          vjust =1,
           label = as.character(xbreaks)
         )
       ),

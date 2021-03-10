@@ -4,12 +4,14 @@
 \alias{plot_mat}
 \title{Title}
 \usage{
-plot_mat(m, color = "blue")
+plot_mat(m, color = "blue", fix_coords = FALSE)
 }
 \arguments{
 \item{m}{A two-row matrix with any number of columns. Rows are assumed to represent dimensions}
 
 \item{color}{Color to use when drawing the matrix vectors. may be hexadecimal.}
+
+\item{fix_coords}{Logical determiniing the plot's aspect ratio. If TRUE,}
 }
 \value{
 A ggplot object plotting each vector encoded in the provided matrix

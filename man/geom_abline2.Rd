@@ -7,10 +7,14 @@
 geom_abline2(slope, intercept, color)
 }
 \arguments{
-\item{color}{}
+\item{slope}{Argument to geom_abline. If infinite, passed to geom_vline instead.}
+
+\item{intercept}{Argument to geom_abline. Treated as geom_vline's x-intercept argument if slope is infinite.}
+
+\item{color}{Argument to either function}
 }
 \value{
-
+a geom_abline or geom_vline object, depending on the arguments used
 }
 \description{
 Process Parameters for both Vertical and Non-Vertical Lines

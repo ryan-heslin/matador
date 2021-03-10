@@ -1,0 +1,56 @@
+---
+title: "matador"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{matador}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(matador)
+```
+Linear algebra is a formidably abstract subject, one that conceals its beauty behind inscrutable matrices.
+
+Matador can help. Born of procrastination on my linear algebra homework, this modest package provides a suite of handy functions for working with and plotting matrices.
+
+Using the mat2latex function, you can easily translate matrix computations in R into LaTeX code suitable for Rmarkdown:
+```{r mat2latex}
+A <- matrix(-1:2, nrow = 2)
+B <- matrix(rep(0.5, 4), nrow =2)
+C <- diag(x = 4, nrow =2)
+ABC <- matador::compose_trans(list(C, B, A))
+mats <- lapply(list(C, B, A, ABC), matador::mat2latex, sink = TRUE) 
+```
+
+\[`r mats[[1]]` `r mats[[2]]` `r mats[[3]]` = `r mats[[4]]`\]
+
+
+With the mat_pows function, you can multiply a matrix by itself as many times as you like:
+```{r}
+
+m <- matrix(c(cos(pi/3), sin(pi/3), -sin(pi/3), cos(pi/3)), nrow =2)
+mat_pows(m, 1:7)
+```
+You can solve a system of equations visually using the plot_lines funciton
+```{r, fig.align='center', fig.width = 8, fig.height=8}
+set.seed(1)
+
+m2 <- matrix(sample(-10:10, 10), nrow = 5)
+plot_lines(m = m2, b = sample(0:10, 5))
+```
+
+But the centerpiece is plot_transform, a flexible function that plots a set of vectors before and after a linear transformation:
+```{r, fig.align='center', fig.width=8, fig.height=8}
+plot_transform(trans = list(diag(x=3, nrow =2), 
+                            matrix(c(-1, 0, 0, 1), nrow =2), matrix(c(1, 0, 2, 1), nrow = 2)))
+```
+
+I hope matador will help you spend less time poring over matrices and more appreciating their elegance.

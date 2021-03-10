@@ -8,27 +8,25 @@
 #' @return A ggplot object depicting the lines of the equations.
 #' @export
 #'
-#' @examples m1 <- matrix(c(1,3, 2, 4))
-#' m2 <- matrix(1, 3, 2, 6)
+#' @examples m1 <- matrix(c(1,3, 2, 4), nrow =2)
+#' m2 <- matrix(c(1, 3, 2, 6), nrow =2)
 #' # Consistent system
-#' plot_lines(m= m1, b = c(2, 0))
+#' plot_lines(m = m1, b = c(2, 0))
 #' # Inconsistent system
 #' plot_lines(m = m2, b = c(5, 7))
 #' # Linearly dependent system - only one line appears because there are infinitely many solutions
 #' plot_lines(m = m2, b = c(1, 2))
-#' Plot many equations at once
+#' #Plot many equations at once
 #' m3 <- matrix(sample(-10:10, 10), nrow = 5)
-#' plot_lines(m3, b = -2:2)
+#' plot_lines(m = m3, b = -2:2)
 plot_lines <-
   function(m,
            b = rep(0, nrow(m)),
            colors = grDevices::rainbow(n = nrow(m))) {
-
-
     if (mode(m) != "numeric" | mode(b) != "numeric") {
       stop("Inputs of nuon-numeric type.")
     } else if (ncol(m) != 2) {
-      stop("Cannot plot equations of", ncol(m), "dimension.")
+      stop("Cannot plot equations of ", ncol(m), " dimension(s).")
     } else if (length(b) != nrow(m)) {
       stop("Dimensions of inputs disagree: m has",
            nrow(m),
@@ -40,16 +38,19 @@ plot_lines <-
     # Get intercepts and slopes
     params <-
       tibble::tibble(x = m[, 1], y = m[, 2], b = as.vector(b)) %>%
-      dplyr::transmute(slope = -x / y,
-                       intercept = dplyr::if_else(y == 0, b / x, b /
-                                                    y), color = colors[1:length(b)])
+      dplyr::transmute(
+        slope = -x / y,
+        intercept = dplyr::if_else(y == 0, b / x, b /
+                                     y),
+        color = colors[1:length(b)]
+      )
 
     m <- stats::setNames(as.data.frame(m), c("x", "y"))
 
     # Annoying vertical line special case
-    if (all(is.finite(params$slope))){
+    if (all(is.finite(params$slope))) {
       xlim <- even_lims(m$x)
-    }else{
+    } else{
       xlim <- even_lims(c(m$x, b))
     }
     ylim <- even_lims(m$y)

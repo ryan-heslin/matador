@@ -2,12 +2,12 @@
 #'
 #' @param m A two-row matrix with any number of columns. Rows are assumed to represent dimensions
 #' @param color Color to use when drawing the matrix vectors. may be hexadecimal.
-#'
+#' @param fix_coords Logical determiniing the plot's aspect ratio. If TRUE,
 #' @return A ggplot object plotting each vector encoded in the provided matrix
 #' @export
 #'
 #' @examples plot_mat(rbind(-10:0, 0:10))
-plot_mat <- function(m, color = "blue") {
+plot_mat <- function(m, color = "blue", fix_coords = FALSE) {
   if (nrow(m) != 2) {
     stop("Matrix of dimension ",
          nrow(m),
@@ -23,6 +23,15 @@ plot_mat <- function(m, color = "blue") {
 
   xlim <- even_lims(m$x)
   ylim <- even_lims(m$y)
+
+  #Use correct coord mode
+  if(fix_coords){
+    coord <- ggplot2::coord_fixed(ratio = 1, xlim = xlim, ylim = ylim)
+
+  }else{
+    coord <- ggplot2::lims(x = xlim, y = ylim)
+  }
+
   out <- ggplot2::ggplot(data = m, ggplot2::aes(x = x, y = y)) +
     ggplot2::geom_segment(
       ggplot2::aes(
@@ -37,8 +46,7 @@ plot_mat <- function(m, color = "blue") {
       color = color,
       size = 1
     ) +
-    ggplot2::coord_fixed(ratio = 1, xlim = xlim, ylim = ylim)
-
+    coord
 
     out + make_axes(p = out)
 }

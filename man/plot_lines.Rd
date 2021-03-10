@@ -21,15 +21,15 @@ A ggplot object depicting the lines of the equations.
 Plot the Lines of the Matrix of a System of Equations
 }
 \examples{
-m1 <- matrix(c(1,3, 2, 4))
-m2 <- matrix(1, 3, 2, 6)
+m1 <- matrix(c(1,3, 2, 4), nrow =2)
+m2 <- matrix(c(1, 3, 2, 6), nrow =2)
 # Consistent system
-plot_lines(m= m1, b = c(2, 0))
+plot_lines(m = m1, b = c(2, 0))
 # Inconsistent system
 plot_lines(m = m2, b = c(5, 7))
 # Linearly dependent system - only one line appears because there are infinitely many solutions
 plot_lines(m = m2, b = c(1, 2))
-Plot many equations at once
+#Plot many equations at once
 m3 <- matrix(sample(-10:10, 10), nrow = 5)
-plot_lines(m3, b = -2:2)
+plot_lines(m = m3, b = -2:2)
 }

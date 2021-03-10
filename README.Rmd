@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-matador is a simple package intended for plotting and working with matirces. It is intended to help students complete typical linear lagebra probelms using Rmarkdown. matador
+matador is a simple package intended for plotting and working with matrices. It is intended to help students complete typical linear algebra problems using Rmarkdown. 
 
 ## Installation
 
@@ -28,17 +28,35 @@ You can install the released version of matador from [CRAN](https://CRAN.R-proje
 install.packages("matador")
 ```
 
-## Example
+matador depends on several of the core tidyverse packages, namely purrr, dplyr, and ggplot2, as well as the ggplot2 extension cowplot.
+
+## Examples
+
+Here are a few demonstrations of matador's functionality:
 
 matador makes it easy to visualize two-dimensional linear transformations:
 
 ```{r example}
 library(matador)
-## basic example code
-```
 
-By setting asis = TRUE in chunk options and using the appropriate funciton, you can convert an R matrix object into rendered LaTeX code:
-
-```{r, asis = TRUE}
+plot_transform(trans = matrix(c(-1, 1,1, -1), nrow =2))
 
 ```
+
+You can do the same for systems of equations:
+```{r}
+plot_lines(m = matrix(c(-5, 2, 3, 7), nrow =2))
+```
+
+Or easily compute arbitrary powers of matrices:
+```{r}
+mat_pows(matrix(1:9, nrow = 3), 1:5)
+```
+
+For more details, take a look at the package vignette.
+
+## Acknowledgements
+
+This package could not have been developed without the invaluable [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package, which simplifies and automates the process of package development. 
+
+The make_axes function benefited greatly from [this](https://stackoverflow.com/questions/17753101/center-x-and-y-axis-with-ggplot2) StackOverflow exchange.
