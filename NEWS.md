@@ -1,3 +1,6 @@
+# matador 1.1.0
+*Added and tested new functions solve_trans, gen_inverse, and square 
+*Updated vignette
 # matador 1.0.0
 
 *Completed initial versions fo all core functions

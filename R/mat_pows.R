@@ -14,15 +14,34 @@
 #' mat_pows(m2, c(1, 5, 1000))
 mat_pows <- function(m, pows){
 
-    if(any(pows <1 |pows %%1 !=0)){
-      stop("Cannot compute non-integer or negative powers of matrices")
-    } else if(mode(m) != "numeric"){
-      stop("Cannot compute powers of non-numeric matrix")
-    } else if(nrow(m) != ncol(m)){
-      stop("Cannot compute powers of non-square matrix")
-    }
     pows <- sort(unique(pows))
   purrr::map(pows, ~`%^%`(m, .x)) %>%
     stats::setNames(pows)
   }
 
+
+
+#' Compute Powers of Matrices
+#' @description Multiplies a square matrix by itself
+#' @param m An _n_ x _n_ matrix.
+#' @param pow A nonzero integer, the exponent to compute.
+#'
+#' @return m raised to the number passed as pow. If pow=1, the unmodified matrix.
+#' @export
+#'
+#' @examples
+#' m <- matrix(1:9, nrow =3)
+#' m %^% 4
+`%^%` <- function(m, pow){
+
+  if(pow <1 |pow %%1 !=0){
+    stop("Cannot compute non-integer or negative powers of matrices")
+  } else if(mode(m) != "numeric"){
+    stop("Cannot compute powers of non-numeric matrix")
+  } else if(nrow(m) != ncol(m)){
+    stop("Cannot compute powers of non-square matrix")
+  }
+
+  replicate(pow, m, simplify = FALSE) %>%
+    purrr::reduce(`%*%`)
+}
