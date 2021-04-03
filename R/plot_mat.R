@@ -32,7 +32,7 @@ plot_mat <- function(m, color = "blue", fix_coords = FALSE) {
     coord <- ggplot2::coord_fixed(ratio = 1, xlim = xlim, ylim = ylim)
 
   }else{
-    coord <- ggplot2::lims(x = xlim, y = ylim)
+    coord <- ggplot2::coord_cartesian(xlim = xlim, ylim = ylim)
   }
 
   out <- ggplot2::ggplot(data = m, ggplot2::aes(x = x, y = y)) +
@@ -40,7 +40,7 @@ plot_mat <- function(m, color = "blue", fix_coords = FALSE) {
       ggplot2::aes(
         xend = x,
         yend = y,
-        x = 0,
+        x = 0, #fudging
         y = 0
       ),
       arrow =

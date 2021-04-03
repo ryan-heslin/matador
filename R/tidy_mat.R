@@ -4,7 +4,7 @@
 #'
 #' @return A [tibble][tibble::tibble-package] organizing the matrix's values in
 #'  plottable form, with columns _x_ and _y_ and one row for each column vector
-#'   of the origianl matrix.
+#'   of the original matrix.
 #' @export
 #'
 #' @examples tidy_mat(matrix(rnorm(n = 20, mean = 5, sd = 3), nrow = 2))

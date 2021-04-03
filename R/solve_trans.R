@@ -22,7 +22,7 @@
 #' to_solve = matrix(c(0, 1, 2)))
 solve_trans <-
   function(xes, txes, to_solve = diag(nrow = nrow(xes))) {
-    if (!is.matrix(to_solve)){
+    if (!is.matrix(to_solve)) {
       to_solve <- as.matrix(to_solve)
     }
     if (any(sapply(list(xes, txes), ncol) < 2)) {
@@ -35,7 +35,7 @@ solve_trans <-
       stop("Cannot solve transformation; at least one non-numeric argument")
     }
 
-      # Solve nonsquare by padding with zero vectors?
+    # Solve nonsquare by padding with zero vectors?
     out <- apply(to_solve, MARGIN = 2, function(x)
       gen_inverse(xes, x)) %>%
       t() %>% apply(., MARGIN = 1, function(x)
@@ -43,4 +43,3 @@ solve_trans <-
 
     out
   }
-

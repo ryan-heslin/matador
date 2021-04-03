@@ -12,7 +12,7 @@ tidy_mat(m)
 \value{
 A \link[tibble:tibble-package]{tibble} organizing the matrix's values in
 plottable form, with columns \emph{x} and \emph{y} and one row for each column vector
-of the origianl matrix.
+of the original matrix.
 }
 \description{
 Convert a 2 x m Matrix to an m x 2 Tibble for Plotting

@@ -40,7 +40,7 @@ m <- matrix(c(cos(pi / 3), sin(pi / 3), -sin(pi / 3), cos(pi / 3)), nrow =
               2)
 mat_pows(m, 1:7)
 ```
-You can solve a system of equations visually using the plot_lines funciton
+You can solve a system of equations visually using the plot_lines function
 ```{r, fig.align='center', fig.width = 8, fig.height=8}
 set.seed(1)
 

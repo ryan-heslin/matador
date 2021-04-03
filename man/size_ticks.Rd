@@ -2,7 +2,7 @@
 % Please edit documentation in R/size_ticks.R
 \name{size_ticks}
 \alias{size_ticks}
-\title{Compute Spans for Ticks on custom Axes}
+\title{Compute Spans for Ticks on Custom Axes}
 \usage{
 size_ticks(breaks, span = 0.0125)
 }
@@ -12,8 +12,8 @@ size_ticks(breaks, span = 0.0125)
 \item{span}{Proportion of the range of the breaks the ticks should span in each direction}
 }
 \value{
-Value representing the distance left or right the tick should span from the drawn acis
+Value representing the distance left or right the tick should span from the drawn axis
 }
 \description{
-Compute Spans for Ticks on custom Axes
+Compute Spans for Ticks on Custom Axes
 }

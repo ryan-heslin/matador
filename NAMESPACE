@@ -2,6 +2,7 @@
 
 export("%>%")
 export("%^%")
+export(check_commute)
 export(compose_trans)
 export(even_lims)
 export(gen_inverse)

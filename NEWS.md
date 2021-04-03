@@ -1,9 +1,13 @@
+# matador 1.2.0
+*Added and tested new function `check_commute`.
+*Fixed bug in `even_lims` that set too narrow limits
+*Fixed several spelling errors.
 # matador 1.1.0
 *Added and tested new functions solve_trans, gen_inverse, and square 
 *Updated vignette
 # matador 1.0.0
 
-*Completed initial versions fo all core functions
+*Completed initial versions of all core functions
 *Updated documentation and vignette
 
 # matador 0.0.0.9001

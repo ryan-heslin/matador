@@ -12,13 +12,6 @@ algebra problems using Rmarkdown.
 
 ## Installation
 
-You can install the released version of matador from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("matador")
-```
-
 matador depends on several of the core tidyverse packages, namely purrr,
 dplyr, and ggplot2, as well as the ggplot2 extension cowplot.
 
