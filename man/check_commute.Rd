@@ -16,17 +16,20 @@ check_commute(
 \item{m}{An n x n matrix of dimension greater than 1 whose commutativity will
 be tested.}
 
-\item{syms}{Matrix of symbols to use to represent the commuting matrices.
+\item{syms}{Character vector of symbols to use to represent the commuting matrices.
 Must have the same dimensions as @param m. Defaults to the first n^2 letters
 of the alphabet, entered rowwise, as is conventional. If @param m has
-dimension 6 or greater, letters are recycled as needed.}
+dimension 6 or greater, letters are recycled as needed. If @param syms
+includes digits and/or punctuation, an error results.}
 
 \item{latex}{is false.}
 
 \item{sink}{Argument passed on to \code{mat2latex}. Defaults to FALSE, ignored if}
 }
 \value{
-
+An n x n matrix, where each element is an equation whose left-hand
+side represents that elements value in \code{AM} and the right-hand side its value
+in \code{MA}.
 }
 \description{
 This function generates symbolic matrices representing those
@@ -35,11 +38,15 @@ applies to square matrices; passing a nonsquare matrix will cause an error.
 This function returns a matrix of the input matrix's dimension, with each
 element consisting of an equation, where the left side is that element's
 value multiplying on the left and the right its value multiplying on the
-right. All matrices whose elements satisfy all the equations commute.
+right. All matrices whose elements satisfy all the equations commute with
+\code{M}.
 
-All n x n matrices trivially commute with `the corresponding identity and
+All n x n matrices trivially commute with the corresponding identity and
 zero matrix, as well as the inverse, if it exists.
 }
 \examples{
 check_commute(matrix(1:4, nrow = 2))
+#Automatically drops zeroed terms
+m <- matrix(sample(-1:1, 9, replace = TRUE), nrow = 3)
+check_commute(m)
 }
