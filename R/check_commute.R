@@ -87,11 +87,11 @@ check_commute <-
 #'
 clean_eqn <- function(eqn) {
   out <-
-    eqn %>% gsub("^0[^0-9]+",
+    eqn %>% gsub("^0[^0-9.]+",
                  replacement = "",
                  x = .,
                  perl = TRUE) %>%
-    gsub("(?<=^|-)1(?![0-9])", "", x = ., perl = TRUE)
+    gsub("(?<=^|-)1(?![0-9.])", "", x = ., perl = TRUE)
   out <- paste(out[out != ""], collapse = " + ") %>%
     gsub("\\+\\s-", "- ", x = ., perl = TRUE) %>%
     gsub("^$", "0", x = .) #empty means 0
