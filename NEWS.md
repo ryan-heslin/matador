@@ -1,3 +1,7 @@
+#matador 1.3.0
+*Revised plot_transform to better distinguish vectors before and after transformation
+*Improved plot_mat to allow finer control of plotted vector aesthetics
+*Fixed several documentation errors.
 # matador 1.2.0
 *Added and tested new function `check_commute`.
 *Fixed bug in `even_lims` that set too narrow limits

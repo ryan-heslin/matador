@@ -9,15 +9,19 @@ mat2latex(m, sink = FALSE)
 \arguments{
 \item{m}{An R matrix object of any dimension}
 
-\item{sink}{Logical determining output mode. If FALSE, the default, mat2latex prints the LaTeX code directly to console. If TRUE,
+\item{sink}{Logical determining output mode. If FALSE, the default, mat2latex
+prints the LaTeX code directly to console. If TRUE,
 it returns the code without printing, a la R's sink function.}
 }
 \value{
-Latex code for printing the matrix. To render the code in an RMarkdown document, call the function in a chunk with  the \code{results = "asis"} option.
-Alternately, set sink to FALSE, store the output in an object, and reference the object in an R code chunk.
+Latex code for printing the matrix. To render the code in an RMarkdown
+document, call the function in a chunk with  the \code{results = "asis"} option.
+Alternately, set sink to FALSE, store the output in an object, and reference
+the object in an R code chunk.
 }
 \description{
-This function converts an R matrix object into LaTeX code for rendering it in a LaTeX environment. It is intended for use in Rmarkdown,
+This function converts an R matrix object into LaTeX code for
+rendering it in a LaTeX environment. It is intended for use in Rmarkdown,
 as a convenience for translating calculations done in R code chunks into LaTeX.
 }
 \examples{

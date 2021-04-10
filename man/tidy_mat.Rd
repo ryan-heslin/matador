@@ -4,10 +4,13 @@
 \alias{tidy_mat}
 \title{Convert a 2 x m Matrix to an m x 2 Tibble for Plotting}
 \usage{
-tidy_mat(m)
+tidy_mat(m, col_names = c("x", "y"))
 }
 \arguments{
 \item{m}{A 2 x m matrix.}
+
+\item{col_names}{A character vector of two distinct column names for the
+output. Defaults to c("x", "y"), which should cover most use cases.}
 }
 \value{
 A \link[tibble:tibble-package]{tibble} organizing the matrix's values in

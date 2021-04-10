@@ -4,17 +4,24 @@
 \alias{plot_mat}
 \title{Plot The Vectors of a Matrix}
 \usage{
-plot_mat(m, color = "blue", fix_coords = FALSE)
+plot_mat(m, fix_coords = FALSE, ...)
 }
 \arguments{
 \item{m}{A 2 x \emph{m} matrix. Rows are assumed to represent dimensions.}
-
-\item{color}{Color to use when drawing the matrix vectors. May be specified as a  hexadecimal.}
 
 \item{fix_coords}{Logical determining the plot's aspect ratio. If TRUE, the plot is scaled to have an aspect ratio of 1,
 meaning the  \emph{x} and \emph{y} dimensions are scaled exactly the same. Note this will distort the size of the plot and will
 result in unreadable plots if the ranges of \emph{x} and \emph{y} are disparate.
 Defaults to FALSE.}
+
+\item{...}{Vectors of aesthetics to guide how \code{geom_segment} draws the plot:
+\code{color}, \code{alpha}, \code{linetype},
+and \code{size}. Default to \code{"black"}, 1, \code{"solid"}, and 1, respectively.
+An error is thrown if any argument of \code{...} has a different name,
+or if a valid name is used more than once. These arguments are not
+validated; if invalid values are chosen, \code{geom_segment} will throw an error
+when it attempts to interpret them. If less than or greater than \emph{m}, recycled
+or truncated by R's standard rules.}
 }
 \value{
 A ggplot object plotting each vector encoded in the provided matrix.
@@ -22,6 +29,12 @@ A ggplot object plotting each vector encoded in the provided matrix.
 \description{
 This function plots the column vectors of a two-dimensional matrix.
 }
+\details{
+@param color governs the color of the arrowhead plotted at the tip of each
+vector, and @param size determines the size.
+}
 \examples{
 plot_mat(rbind(-10:0, 0:10))
+# Very ugly plot of the standard vectors
+plot_mat(diag(nrow =2), size = c(2, 3), color = c("purple", "orange"))
 }

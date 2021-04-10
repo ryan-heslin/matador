@@ -27,6 +27,10 @@ library(matador)
 #> Loading required package: magrittr
 
 plot_transform(trans = matrix(c(-1, 1,1, -1), nrow =2))
+#> Scale for 'linetype' is already present. Adding another scale for 'linetype', which will replace
+#> the existing scale.
+#> Scale for 'linetype' is already present. Adding another scale for 'linetype', which will replace
+#> the existing scale.
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -76,7 +80,7 @@ mat_pows(matrix(1:9, nrow = 3), 1:5)
 
 For more details, take a look at the package vignette.
 
-## Acknowledgements
+## Acknowledgments
 
 This package could not have been developed without the invaluable
 [devtools](https://cran.r-project.org/web/packages/devtools/index.html)
