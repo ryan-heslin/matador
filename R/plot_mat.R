@@ -56,20 +56,6 @@ plot_mat <- function(m,
     m <-
     cbind(m, purrr::map_dfc(dots, ~ rep_len(.x, length.out = nrow(m))))
 
-
-
-  # get scale_*_identity funs
-  geoms <- list(
-    linetype = ggplot2::scale_linetype_identity(),
-    alpha = ggplot2::scale_alpha_identity(),
-    color = ggplot2::scale_color_identity(),
-    linetype = ggplot2::scale_linetype_identity(),
-    size = ggplot2::scale_size_identity()
-  )
-
-
-  segment_args <- names(m)
-
   xlim <- even_lims(m$xend)
   ylim <- even_lims(m$yend)
 
@@ -86,7 +72,7 @@ plot_mat <- function(m,
     ggplot2::geom_segment(
       x = 0,
       y = 0,
-      ggplot2::aes_all(segment_args),
+      ggplot2::aes_all(names(m)),
       arrow = grid::arrow(
         type = "closed",
         angle = 20,
@@ -95,7 +81,8 @@ plot_mat <- function(m,
       arrow.fill = m$color
 
     ) +
-    geoms +
+    ggplot2::scale_continuous_identity(aesthetics = c("alpha", "size")) +
+    ggplot2::scale_discrete_identity(aesthetics = c("linetype", "color")) +
     coord)
 
   out + make_axes(p = out)

@@ -16,10 +16,11 @@ check_commute(
 \item{m}{An n x n matrix of dimension greater than 1 whose commutativity will
 be tested.}
 
-\item{syms}{Character vector of symbols to use to represent the commuting matrices.
-Must have the same dimensions as @param m. Defaults to the first n^2 letters
+\item{syms}{Character vector of symbols to use to represent the commuting matrix
+A. Must have the same dimensions as @param m. Defaults to the first \code{n^2} letters
 of the alphabet, entered rowwise, as is conventional. If @param m has
-dimension 6 or greater, letters are recycled as needed. If @param syms
+dimension 6 (implying 36 elements) or greater, letters are recycled as needed.
+If @param syms
 includes digits and/or punctuation, an error results.}
 
 \item{latex}{is false.}
@@ -28,7 +29,7 @@ includes digits and/or punctuation, an error results.}
 }
 \value{
 An n x n matrix, where each element is an equation whose left-hand
-side represents that elements value in \code{AM} and the right-hand side its value
+side represents that element's value in \code{AM} and the right-hand side its value
 in \code{MA}.
 }
 \description{

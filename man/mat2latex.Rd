@@ -7,7 +7,9 @@
 mat2latex(m, sink = FALSE)
 }
 \arguments{
-\item{m}{An R matrix object of any dimension}
+\item{m}{An R matrix object of any dimension. If not a matrix, the function
+attempts to coerce it to one using \code{as.matrix}, which should work on ordinary
+vectors but may have unexpected results on other objects.}
 
 \item{sink}{Logical determining output mode. If FALSE, the default, mat2latex
 prints the LaTeX code directly to console. If TRUE,
@@ -21,14 +23,18 @@ the object in an R code chunk.
 }
 \description{
 This function converts an R matrix object into LaTeX code for
-rendering it in a LaTeX environment. It is intended for use in Rmarkdown,
+rendering in a LaTeX environment. It is intended for use in Rmarkdown,
 as a convenience for translating calculations done in R code chunks into LaTeX.
 }
 \examples{
 #Large matrices are not difficult to process.
 mat2latex(as.matrix(mtcars))
-#Make a list storing code to print each element of a matrix equation
+# Make a list storing code to print each element of a matrix equation
 A <- matrix(-1:2, nrow = 2)
 B <- matrix(rep(0.5, 4), nrow =2)
 C <- diag(x = 4, nrow =2)
+ABC <- matador::compose_trans(list(C, B, A))
+mats <- lapply(list(C, B, A, ABC), matador::mat2latex, sink = TRUE)
+# Use cat to print stored matrices; print won't handle backslashes correctly.
+sapply(mats, cat)
 }
