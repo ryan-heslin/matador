@@ -10,16 +10,21 @@ l2 <- function(v) {
   sqrt(sum(v ^ 2))
 }
 
+# Normalize to unit vector
+normalize <- function(v){
+  validate_vec(v)
+  v /l2(v)
+}
+
 # Compute dot product
 dot <- function(v1, v2) {
-  validate_vec(v)
+  validate_vec(v1, v2)
   as.numeric((t(v1) %*% v2))
 
 }
 
 #Compute angle between vectors
 angle <- function(v1, v2) {
-  validate_vec(v1, v2)
   acos(dot(v1, v2) / (l2(v1) * l2(v2)))
 }
 

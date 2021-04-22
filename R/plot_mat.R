@@ -5,6 +5,10 @@
 #' meaning the  _x_ and _y_ dimensions are scaled exactly the same. Note this will distort the size of the plot and will
 #' result in unreadable plots if the ranges of _x_ and _y_ are disparate.
 #' Defaults to FALSE.
+#' @param lims_scale Scaling factor to apply to plot limits. For example, setting
+#' this arguemnt to 2 doubles the default limits in each dimension. If less than
+#' 1, some of the plotted vectors are cut off and a message is sent. Defaults to
+#' 1.
 #' @param ... Vectors of aesthetics to guide how `geom_segment` draws the plot:
 #'  `color`, `alpha`, `linetype`,
 #' and `size`. Default to `"black"`, 1, `"solid"`, and 1, respectively.
@@ -22,7 +26,7 @@
 #' # Very ugly plot of the standard vectors
 #' plot_mat(diag(nrow =2), size = c(2, 3), color = c("purple", "orange"))
 plot_mat <- function(m,
-                     fix_coords = FALSE, ...) {
+                     fix_coords = FALSE, lims_scale = 1, ...) {
   SEGMENT_AES <-
     list(
       alpha = 1,
@@ -46,6 +50,10 @@ plot_mat <- function(m,
     stop("Cannot pass multiple specifications for the same aesthetic via ...")
   }
 
+  if(lims_scale < 1){
+    message("Limits scaling factor less than 1. vectors will not be fully plotted")
+  }
+
   # Substitute default aesthetics
   dots <-
     c(dots, SEGMENT_AES[setdiff(names(SEGMENT_AES), names(dots))])
@@ -56,8 +64,8 @@ plot_mat <- function(m,
     m <-
     cbind(m, purrr::map_dfc(dots, ~ rep_len(.x, length.out = nrow(m))))
 
-  xlim <- even_lims(m$xend)
-  ylim <- even_lims(m$yend)
+  xlim <- even_lims(m$xend * lims_scale)
+  ylim <- even_lims(m$yend * lims_scale)
 
   #Use correct coord mode
   if (fix_coords) {
