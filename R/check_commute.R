@@ -79,9 +79,8 @@ check_commute <-
 #' @return a length-one character vector that drops zero-coefficient terms and
 #' separates terms with the correct `+` and `-` signs. If all terms are zeroed,
 #' the empty string.
-#'
-#'
-#'
+
+# Helper to convert results into equations
 clean_eqn <- function(eqn) {
   out <-
     eqn %>% gsub("^0[^0-9.]+",

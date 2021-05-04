@@ -3,9 +3,12 @@
 #' @description This function produces plots illustrating the transformation of
 #' a pair of linearly independent two-dimensional vectors into an orthogonal
 #' basis (the `Q` of the `QR` decomposition). The algorithm, which can be found
-#' in any linear algebra textbook,
+#' in any linear algebra textbook, scales the first vector to unit length, then
+#' extracts the component of the second vector orthogonal to the first and
+#' normalizes it. The plots are based on those found on pp. 218-219 of Otto
+#' Bretscher's _Linear Algebra with Applications_ (5th ed.).
 #' @param m A 2 x 2 numeric matrix of full rank, one whose columns provide a
-#' valid basis for the two-dimensional plane. If `m` has different dimesnions,
+#' valid basis for the two-dimensional plane. If `m` has different dimensions,
 #' a different type, or does not have full rank, an error is thrown.
 #' @param color_par Color for the second vector's parallel component.
 #' @param color_perp Color for the second vector's orthogonal component.
@@ -15,19 +18,21 @@
 #' @param fix_coords Logical determining whether to draw the plots with fixed
 #' aspect ratio. Defaults to FALSE.
 #'
-#' @return If `output` is "plot", a multiplot featuring the decomposition plots;
+#' @return If `output` is "plot", a multiplot featuring the six decomposition plots;
 #' otherwise a list containing them.
 #' @export
 #'
 #' @examples
 #' plot_decomposition(square(1, 4, 7, 2))
+#' # With custom colors
+#' plot_decomposition(square(1:4), color_par = "green", color_perp = "orange")
 #' # Already orthogonal vectors: only scaling necessary
 #' plot_decomposition(square(30, 20, 2, -3))
 plot_decomposition <-
   function(m,
            color_par = "blue",
            color_perp = "red",
-           output = c("list", "plot"),
+           output = "plot",
            fix_coords = FALSE) {
     if (!is.matrix(m))
       stop("Argument must be a matrix")
@@ -37,10 +42,10 @@ plot_decomposition <-
       stop("Argument must be a 2 x 2 matrix")
     if (det(m) == 0)
       stop("Argument has rank < 2 and is not a valid basis")
-  #browser()
-    output <- match.arg(output)
-    if (is.na(output))
-      output <- "plot"
+
+    if (output != "plot") {
+      output <- "list"
+    }
 
     u1 <- normalize(m[, 1])
     v2_perp <- m[, 2] - (dot(u1, m[, 2])) * u1
@@ -60,34 +65,56 @@ plot_decomposition <-
       ) %>%
       purrr::pmap(ggplot2::geom_segment)
 
-      # Offset to ensure end of v_par appears on plot
-    seg_offset <- 1 + sqrt(max(abs(v2_par))/max(abs(m[,2])))
+    # Offset to ensure end of v_par appears on plot
+    seg_offset <- 1 + sqrt(max(abs(v2_par)) / max(abs(m[, 2])))
+    lims_scales <- c(rep(1.125, 2), seg_offset, rep(1.125, 3))
+
+    # Labels for parallel segments
+    seg_lab_pos <-
+      list(par = u1 + (v2_par - u1)/2, perp = v2_par + (m[, 2] - v2_par) / 2)
 
     #Parameters for using draw_plots to create plots
     params <-
       list(
-        m = list(m,   cbind(u1, m[, 2]), cbind(u1, m[, 2]), cbind(u1, u2)),
+        m = list(
+          m,
+          cbind(u1, m[, 2]),
+          cbind(u1, m[, 2]),
+          cbind(u1, v2_perp),
+          cbind(u1, v2_perp),
+          cbind(u1, u2)
+        ),
         labels = list(
           c("v[1]", "v[2]"),
           c("u[1]", "v[2]"),
-          c("", ""),
-          c("u[1]", "u[2]")
+          c(latex2exp::TeX("$u_1 = \\frac{1}{||v_1||}v_1$"), "v[2]"),
+          c("u[1]", "v[2]"),
+          c(latex2exp::TeX("$v_2{\\perp} = v_2 - (u_1 \\cdot{u_2})u_1$"), "v[2]"),
+          c("u[1]", latex2exp::TeX("$u_2 = \\frac{1}{||v_2{\\perp}||}v_2{\\perp}$"))
         ),
-        fix_coords = as.list(rep(fix_coords, 4)),
-        lims_scale = as.list(c(1.125, 1.125, seg_offset, 1.125))
+        fix_coords = as.list(rep(fix_coords, 6)),
+        lims_scale = as.list(lims_scales)
       ) %>%
-      purrr::transpose()
+      purrr::transpose(.)
     plots <- purrr::map(params,
                         ~ do.call("draw_plots", .x)) %>%
-      setNames(paste0("p", 1:4))
+      stats::setNames(nm = paste0("p", 1:6))
 
-    plots$p3 <- plots$p3 + segs
+    plots$p3 <- plots$p3 + segs +
+      ggplot2::annotate("text",
+                        x =  seg_lab_pos$par[1],
+                        y = seg_lab_pos$par[2],
+                        label = latex2exp::TeX("$v_2{\\parallel}$"), parse = TRUE) +
+      ggplot2::annotate("text",
+                        x =  seg_lab_pos$perp[1],
+                        y = seg_lab_pos$perp[2],
+                        label = latex2exp::TeX("$v_2{\\perp}$"), parse = TRUE)
 
-    if(output == "list"){
+    if (output == "list") {
       return(unname(plots))
-    }else{
+    } else{
       do.call(getExportedValue("gridExtra", "grid.arrange"),
-            c(plots, nrow = 2, ncol = 2))
+              c(plots, nrow = 3, ncol = 2))
     }
   }
 

@@ -16,10 +16,10 @@ prints the LaTeX code directly to console. If TRUE,
 it returns the code without printing, a la R's sink function.}
 }
 \value{
-Latex code for printing the matrix. To render the code in an RMarkdown
+Latex code for printing the matrix. To render the code in an Rmarkdown
 document, call the function in a chunk with  the \code{results = "asis"} option.
-Alternately, set sink to FALSE, store the output in an object, and reference
-the object in an R code chunk.
+Alternately, set sink to TRUE, store the output in an object, and call \code{cat}
+or \code{print_eqn} on the object in an R code chunk.
 }
 \description{
 This function converts an R matrix object into LaTeX code for
@@ -35,6 +35,6 @@ B <- matrix(rep(0.5, 4), nrow =2)
 C <- diag(x = 4, nrow =2)
 ABC <- matador::compose_trans(list(C, B, A))
 mats <- lapply(list(C, B, A, ABC), matador::mat2latex, sink = TRUE)
-# Use cat to print stored matrices; print won't handle backslashes correctly.
-sapply(mats, cat)
+# Some trickery is required to print matrices stored in a list.
+invisible(sapply(mats, function(x) cat(x, sep = "\n")))
 }

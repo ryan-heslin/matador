@@ -8,10 +8,10 @@
 #' @param sink Logical determining output mode. If FALSE, the default, mat2latex
 #' prints the LaTeX code directly to console. If TRUE,
 #' it returns the code without printing, a la R's sink function.
-#' @return Latex code for printing the matrix. To render the code in an RMarkdown
-#'  document, call the function in a chunk with  the `results = "asis"` option.
-#' Alternately, set sink to FALSE, store the output in an object, and reference
-#'  the object in an R code chunk.
+#' @return Latex code for printing the matrix. To render the code in an Rmarkdown
+#' document, call the function in a chunk with  the `results = "asis"` option.
+#' Alternately, set sink to TRUE, store the output in an object, and call `cat`
+#' or `print_eqn` on the object in an R code chunk.
 #' @export
 #'
 #' @examples #Large matrices are not difficult to process.
@@ -22,23 +22,24 @@
 #' C <- diag(x = 4, nrow =2)
 #' ABC <- matador::compose_trans(list(C, B, A))
 #' mats <- lapply(list(C, B, A, ABC), matador::mat2latex, sink = TRUE)
-#' # Use cat to print stored matrices; print won't handle backslashes correctly.
-#' sapply(mats, cat)
-mat2latex <- function(m, sink = FALSE){
-
-  if(!is.matrix(m)){
+#' # Some trickery is required to print matrices stored in a list.
+#' invisible(sapply(mats, function(x) cat(x, sep = "\n")))
+mat2latex <- function(m, sink = FALSE) {
+  if (!is.matrix(m)) {
     message("Argument is not a matrix. Attempting to coerce")
     m <- as.matrix(m)
   }
-  out <- apply(m, MARGIN = 1, function(x) paste(x, collapse = " & "))
+  out <-
+    apply(m, MARGIN = 1, function(x)
+      paste(x, collapse = " & "))
   out[-length(out)] <- paste0(out[-length(out)], "\\\\")
-  out <- c("\\begin{bmatrix}\n", out, "\n\\end{bmatrix}\n") %>%
-    paste(collapse = " ")
+  out <- c("\\begin{bmatrix}", out, "\\end{bmatrix}")
 
   #Print output
-  if(sink){
+  if (sink) {
     return(out)
-  }else{
+  } else{
+
   }
-  cat(out)
+  print_eqn(out)
 }

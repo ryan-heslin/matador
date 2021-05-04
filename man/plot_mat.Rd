@@ -4,7 +4,7 @@
 \alias{plot_mat}
 \title{Plot The Vectors of a Matrix}
 \usage{
-plot_mat(m, fix_coords = FALSE, ...)
+plot_mat(m, fix_coords = FALSE, lims_scale = 1, ...)
 }
 \arguments{
 \item{m}{A 2 x \emph{m} matrix. Rows are assumed to represent dimensions.}
@@ -13,6 +13,11 @@ plot_mat(m, fix_coords = FALSE, ...)
 meaning the  \emph{x} and \emph{y} dimensions are scaled exactly the same. Note this will distort the size of the plot and will
 result in unreadable plots if the ranges of \emph{x} and \emph{y} are disparate.
 Defaults to FALSE.}
+
+\item{lims_scale}{Scaling factor to apply to plot limits. For example, setting
+this argument to 2 doubles the default limits in each dimension. If less than
+1 in absolute value, some of the plotted vectors are cut off and a message is
+generated. Defaults to 1.}
 
 \item{...}{Vectors of aesthetics to guide how \code{geom_segment} draws the plot:
 \code{color}, \code{alpha}, \code{linetype},

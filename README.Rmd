@@ -33,7 +33,7 @@ matador makes it easy to visualize two-dimensional linear transformations:
 
 ```{r example}
 library(matador)
-
+ggplot2::theme_set(ggplot2::theme_minimal())
 plot_transform(trans = matrix(c(-1, 1,1, -1), nrow =2))
 
 ```
@@ -47,6 +47,11 @@ Or easily compute arbitrary powers of matrices:
 ```{r}
 mat_pows(matrix(1:9, nrow = 3), 1:5)
 ```
+Or even display the orthogonal decomposition of a matrix:
+
+```{r}
+plot_decomposition(square(1, 2, 3, 4))
+```
 
 For more details, take a look at the package vignette.
 
@@ -54,4 +59,17 @@ For more details, take a look at the package vignette.
 
 This package could not have been developed without the invaluable [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package, which simplifies and automates the process of package development. 
 
-The make_axes function benefited greatly from [this](https://stackoverflow.com/questions/17753101/center-x-and-y-axis-with-ggplot2) StackOverflow exchange.
+`make_axes` benefited greatly from [this](https://stackoverflow.com/questions/17753101/center-x-and-y-axis-with-ggplot2) StackOverflow exchange.
+
+Documentation for `vec_helpers` drew on [this](https://stackoverflow.com/questions/15932585/multiple-functions-in-one-rd-file) resource.
+
+`print_eqn` was inspired by
+[this](https://stackoverflow.com/questions/30879083/make-r-markdown-code-blocks-into-math-mode)
+StackOverflow post.
+
+My primary linear algebra resource was Otto Bretscher's _Linear Algebra with Applications_ (5th ed.).
+
+Professor Joshua Lansky's linear algebra course inspired this package and gave me the knowledge
+in linear algebra to complete it.
+
+

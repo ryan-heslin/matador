@@ -1,3 +1,10 @@
+#matador 1.4.0
+*Added new function, plot_decomposition, to graphically display the creation
+of an orthonormal basis
+*Added helper functions to compute dot products, angles
+*Clarified mat2latex documentation
+*Modified mat2latex to coerce vectors to matrices
+*Added limit scaling option to plot_mat
 #matador 1.3.0
 *Revised plot_transform to better distinguish vectors before and after transformation
 *Improved plot_mat to allow finer control of plotted vector aesthetics

@@ -25,12 +25,8 @@ transformations:
 ``` r
 library(matador)
 #> Loading required package: magrittr
-
+ggplot2::theme_set(ggplot2::theme_minimal())
 plot_transform(trans = matrix(c(-1, 1,1, -1), nrow =2))
-#> Scale for 'linetype' is already present. Adding another scale for 'linetype', which will replace
-#> the existing scale.
-#> Scale for 'linetype' is already present. Adding another scale for 'linetype', which will replace
-#> the existing scale.
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -78,6 +74,14 @@ mat_pows(matrix(1:9, nrow = 3), 1:5)
 #> [3,] 177552 402084 626616
 ```
 
+Or even display the orthogonal decomposition of a matrix:
+
+``` r
+plot_decomposition(square(1, 2, 3, 4))
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
 For more details, take a look at the package vignette.
 
 ## Acknowledgments
@@ -87,6 +91,20 @@ This package could not have been developed without the invaluable
 package, which simplifies and automates the process of package
 development.
 
-The make\_axes function benefited greatly from
+`make_axes` benefited greatly from
 [this](https://stackoverflow.com/questions/17753101/center-x-and-y-axis-with-ggplot2)
 StackOverflow exchange.
+
+Documentation for `vec_helpers` drew on
+[this](https://stackoverflow.com/questions/15932585/multiple-functions-in-one-rd-file)
+resource.
+
+`print_eqn` was inspired by
+[this](https://stackoverflow.com/questions/30879083/make-r-markdown-code-blocks-into-math-mode)
+StackOverflow post.
+
+My primary linear algebra resource was Otto Bretscher’s *Linear Algebra
+with Applications* (5th ed.).
+
+Professor Joshua Lansky’s linear algebra course inspired this package
+and gave me the knowledge in linear algebra to complete it.

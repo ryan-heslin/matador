@@ -6,9 +6,9 @@
 #' result in unreadable plots if the ranges of _x_ and _y_ are disparate.
 #' Defaults to FALSE.
 #' @param lims_scale Scaling factor to apply to plot limits. For example, setting
-#' this arguemnt to 2 doubles the default limits in each dimension. If less than
-#' 1, some of the plotted vectors are cut off and a message is sent. Defaults to
-#' 1.
+#' this argument to 2 doubles the default limits in each dimension. If less than
+#' 1 in absolute value, some of the plotted vectors are cut off and a message is
+#' generated. Defaults to 1.
 #' @param ... Vectors of aesthetics to guide how `geom_segment` draws the plot:
 #'  `color`, `alpha`, `linetype`,
 #' and `size`. Default to `"black"`, 1, `"solid"`, and 1, respectively.

@@ -18,7 +18,7 @@ square <- function(..., byrow = FALSE) {
   dots <- do.call("c", list(...))
   len <- sqrt(length(dots))
   if (len %% 1 != 0) {
-    stop("Cannot construct square matrix from", len, "elements")
+    stop("Cannot construct square matrix from", length(dots), "elements")
   }
   matrix(dots, nrow = len, byrow = byrow)
 }

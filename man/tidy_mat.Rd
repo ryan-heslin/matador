@@ -2,15 +2,15 @@
 % Please edit documentation in R/tidy_mat.R
 \name{tidy_mat}
 \alias{tidy_mat}
-\title{Convert a 2 x m Matrix to an m x 2 Tibble for Plotting}
+\title{Convert a 2 x \emph{m} Matrix to an m x 2 Tibble for Plotting}
 \usage{
 tidy_mat(m, col_names = c("x", "y"))
 }
 \arguments{
-\item{m}{A 2 x m matrix.}
+\item{m}{A 2 x \emph{m} matrix.}
 
 \item{col_names}{A character vector of two distinct column names for the
-output. Defaults to c("x", "y"), which should cover most use cases.}
+output. Defaults to \code{c("x", "y")}, which should cover most use cases.}
 }
 \value{
 A \link[tibble:tibble-package]{tibble} organizing the matrix's values in
@@ -18,7 +18,8 @@ plottable form, with columns \emph{x} and \emph{y} and one row for each column v
 of the original matrix.
 }
 \description{
-Convert a 2 x m Matrix to an m x 2 Tibble for Plotting
+This function transforms a matrix into a tibble suitable for
+plotting. Custom column names may be supplied.
 }
 \examples{
 tidy_mat(matrix(rnorm(n = 20, mean = 5, sd = 3), nrow = 2))
