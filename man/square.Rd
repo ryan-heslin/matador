@@ -14,13 +14,13 @@ a perfect square. Elements of differing types are automatically coerced using
 \item{byrow}{Argument passed along to \code{matrix}. Defaults to FALSE.}
 }
 \value{
-An n x n matrix, where n is equal to the length of \code{...} after
+An n x n matrix, where \code{n} is equal to the length of \code{...} after
 concatenation.
 }
 \description{
 This simple convenience function creates a square matrix from
-elements passed via @param ... . It will throw an error if the number of
-elements passed to @param ... is not a perfect square.
+elements passed via  \code{...}. It will throw an error if the number of
+elements passed to \code{...} is not a perfect square.
 }
 \examples{
 square(1, 5, 6, 7, 8, 9, 1, 2, -1)

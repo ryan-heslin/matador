@@ -25,6 +25,12 @@ matador is a simple package intended for plotting and working with matrices. It 
 
 matador depends on several of the core tidyverse packages, namely purrr, dplyr, and ggplot2, as well as the ggplot2 extension cowplot.
 
+You can install `matador` using
+```{r, eval=FALSE}
+devtools::install_github("ryan-heslin/matador")
+```
+
+
 ## Examples
 
 Here are a few demonstrations of matador's functionality:
@@ -50,7 +56,7 @@ mat_pows(matrix(1:9, nrow = 3), 1:5)
 Or even display the orthogonal decomposition of a matrix:
 
 ```{r}
-plot_decomposition(square(1, 2, 3, 4))
+plot_decomposition(square(1, 2, 1, -4))
 ```
 
 For more details, take a look at the package vignette.
@@ -71,5 +77,3 @@ My primary linear algebra resource was Otto Bretscher's _Linear Algebra with App
 
 Professor Joshua Lansky's linear algebra course inspired this package and gave me the knowledge
 in linear algebra to complete it.
-
-

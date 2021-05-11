@@ -16,36 +16,37 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(matador)
+ggplot2::theme_set(ggplot2::theme_minimal())
 ```
 Linear algebra is a formidably abstract subject, one that conceals its beauty behind inscrutable matrices.
 
-Matador can help. Born of procrastination on my linear algebra homework, this modest package provides a suite of handy functions for working with and plotting matrices.
+Matador can help. Born of procrastination on my linear algebra homework, this modest package provides a suite of handy functions for working with and plotting matrices. Other matrix
+algebra packages specialize in efficient computation, but matador instead focuses
+on convenience and visualization.
 
 Using the `mat2latex` function, you can easily translate matrix computations in R into LaTeX code suitable for Rmarkdown:
-```{r mat2latex}
+```{r mat2latex, results = "asis"}
 A <- matrix(-1:2, nrow = 2)
 B <- matrix(rep(0.5, 4), nrow = 2)
 C <- diag(x = 4, nrow = 2)
 ABC <- matador::compose_trans(list(C, B, A))
-mats <- lapply(list(C, B, A, ABC), matador::mat2latex, sink = TRUE) 
+mats <- lapply(list(C, B, A, ABC), matador::mat2latex, sink = TRUE)
+invisible(sapply(mats, function(x) cat(x, sep = "\n")))
 ```
-
-\[`r mats[[1]]` `r mats[[2]]` `r mats[[3]]` = `r mats[[4]]`\]
-
 
 With the `mat_pows` function, you can multiply a matrix by itself as many times as you like:
 ```{r}
 
 m <- matrix(c(cos(pi / 3), sin(pi / 3), -sin(pi / 3), cos(pi / 3)), nrow =
               2)
-mat_pows(m, 1:7)
+lapply(mat_pows(m, 1:7), round, digits = 3) 
 ```
 You can solve a system of equations visually using the plot_lines function
 ```{r, fig.align='center', fig.width = 8, fig.height=8}
 set.seed(1)
 
 m2 <- matrix(sample(-10:10, 10), nrow = 5)
-plot_lines(m = m2, b = sample(0:10, 5))
+plot_lines(m = m2, b = sample(0:10, 5)) 
 ```
 There are also convenience functions to simplify common computations. `square`,
 for instance, will automatically construct a square matrix:
@@ -57,7 +58,10 @@ square(letters[1:9])
 But the centerpiece is `plot_transform`, a flexible function that plots a set of vectors before and after a linear transformation:
 ```{r, fig.align='center', fig.width=8, fig.height=8}
 plot_transform(trans = list(diag(x=3, nrow =2), 
-                            matrix(c(-1, 0, 0, 1), nrow =2), matrix(c(1, 0, 2, 1), nrow = 2)))
+                            matrix(c(-1, 0, 0, 1), nrow =2), matrix(c(1, 0, 2, 1), nrow = 2))) 
 ```
+Other functions can help you do things like determine whether matrices 
+compute, plot the orthogonal decomposition of a vector, and more.
+
 I hope matador will help you spend less time poring over matrices and more
-learning the nuts and bolts of linear algebra.
+learning the fascinating nuts and bolts of linear algebra.

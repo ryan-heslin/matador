@@ -4,7 +4,7 @@
 \alias{mat2latex}
 \title{Convert an R Matrix Object to LaTeX Code}
 \usage{
-mat2latex(m, sink = FALSE)
+mat2latex(m, sink = FALSE, slash_repeats = 1)
 }
 \arguments{
 \item{m}{An R matrix object of any dimension. If not a matrix, the function
@@ -14,6 +14,11 @@ vectors but may have unexpected results on other objects.}
 \item{sink}{Logical determining output mode. If FALSE, the default, mat2latex
 prints the LaTeX code directly to console. If TRUE,
 it returns the code without printing, a la R's sink function.}
+
+\item{slash_repeats}{Number of times to repeat the "\\" escape. This should
+usually be 1, but should be increased if the generated LaTeX code will be
+parsed twice, as will happen if \code{mat2latex} is invoked in an RStudio snippet.
+Defaults to 1.}
 }
 \value{
 Latex code for printing the matrix. To render the code in an Rmarkdown

@@ -8,6 +8,10 @@
 #' @param sink Logical determining output mode. If FALSE, the default, mat2latex
 #' prints the LaTeX code directly to console. If TRUE,
 #' it returns the code without printing, a la R's sink function.
+#' @param slash_repeats Number of times to repeat the "\\" escape. This should
+#' usually be 1, but should be increased if the generated LaTeX code will be
+#' parsed twice, as will happen if `mat2latex` is invoked in an RStudio snippet.
+#' Defaults to 1.
 #' @return Latex code for printing the matrix. To render the code in an Rmarkdown
 #' document, call the function in a chunk with  the `results = "asis"` option.
 #' Alternately, set sink to TRUE, store the output in an object, and call `cat`
@@ -24,16 +28,17 @@
 #' mats <- lapply(list(C, B, A, ABC), matador::mat2latex, sink = TRUE)
 #' # Some trickery is required to print matrices stored in a list.
 #' invisible(sapply(mats, function(x) cat(x, sep = "\n")))
-mat2latex <- function(m, sink = FALSE) {
+mat2latex <- function(m, sink = FALSE, slash_repeats =1) {
   if (!is.matrix(m)) {
     message("Argument is not a matrix. Attempting to coerce")
     m <- as.matrix(m)
   }
+  slashes <- paste(rep("\\", times = slash_repeats), collapse = "")
   out <-
     apply(m, MARGIN = 1, function(x)
       paste(x, collapse = " & "))
-  out[-length(out)] <- paste0(out[-length(out)], "\\\\")
-  out <- c("\\begin{bmatrix}", out, "\\end{bmatrix}")
+  out[-length(out)] <- paste0(out[-length(out)], paste0(rep(slashes, times = 2), collapse = ""))
+  out <- c(paste0(slashes, "begin{bmatrix}"), out, paste0(slashes, "end{bmatrix}"))
 
   #Print output
   if (sink) {

@@ -29,7 +29,8 @@ Defaults to \verb{f(t) = } Set to "" or NULL to obtain only the right-hand side.
 print it directly to console. Defaults to FALSE.}
 }
 \value{
-
+If \code{sink = TRUE}, a character vector containing LaTeX code to represent
+\code{v} as a polynomial. If \code{FALSE}, outputs code directly to console.
 }
 \description{
 This function transforms a numeric vector representing a
@@ -40,8 +41,8 @@ documents with PDF output, where it can convert vectors into formatted
 equations automatically.
 }
 \examples{
-poly2latex(c(1:5))
+poly2latex(1:5)
 #Constant function
 poly2latex(-7)
-poly2latex(round(rnorm(5), digits = 2)
+poly2latex(round(rnorm(5), digits = 2))
 }

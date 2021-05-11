@@ -8,6 +8,7 @@ plot_decomposition(
   m,
   color_par = "blue",
   color_perp = "red",
+  color_text = "red4",
   output = "plot",
   fix_coords = FALSE
 )
@@ -20,6 +21,8 @@ a different type, or does not have full rank, an error is thrown.}
 \item{color_par}{Color for the second vector's parallel component.}
 
 \item{color_perp}{Color for the second vector's orthogonal component.}
+
+\item{color_text}{Color for the text of the equations.}
 
 \item{output}{Output mode. If "plot", a single \code{gridExtra} multiplot featuring
 the plots side by side. If "list", a list containing the plots. Defaults to

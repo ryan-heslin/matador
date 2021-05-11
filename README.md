@@ -15,6 +15,12 @@ algebra problems using Rmarkdown.
 matador depends on several of the core tidyverse packages, namely purrr,
 dplyr, and ggplot2, as well as the ggplot2 extension cowplot.
 
+You can install `matador` using
+
+``` r
+devtools::install_github("ryan-heslin/matador")
+```
+
 ## Examples
 
 Here are a few demonstrations of matador’s functionality:
@@ -37,7 +43,7 @@ You can do the same for systems of equations:
 plot_lines(m = matrix(c(-5, 2, 3, 7), nrow =2))
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 Or easily compute arbitrary powers of matrices:
 
@@ -77,10 +83,10 @@ mat_pows(matrix(1:9, nrow = 3), 1:5)
 Or even display the orthogonal decomposition of a matrix:
 
 ``` r
-plot_decomposition(square(1, 2, 3, 4))
+plot_decomposition(square(1, 2, 1, -4))
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 For more details, take a look at the package vignette.
 

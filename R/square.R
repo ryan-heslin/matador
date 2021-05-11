@@ -1,12 +1,12 @@
 #' Create a Square Matrix
 #' @description This simple convenience function creates a square matrix from
-#' elements passed via @param ... . It will throw an error if the number of
-#' elements passed to @param ... is not a perfect square.
+#' elements passed via  `...`. It will throw an error if the number of
+#' elements passed to `...` is not a perfect square.
 #' @param ... Elements of the matrix as vectors whose total number of elements is
 #' a perfect square. Elements of differing types are automatically coerced using
 #' `c`.
 #' @param byrow Argument passed along to `matrix`. Defaults to FALSE.
-#' @return An n x n matrix, where n is equal to the length of `...` after
+#' @return An n x n matrix, where `n` is equal to the length of `...` after
 #' concatenation.
 #' @export
 #'

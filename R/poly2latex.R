@@ -18,13 +18,14 @@
 #' @param sink Logical determining whether to return the output conventionally or
 #' print it directly to console. Defaults to FALSE.
 #'
-#' @return
+#' @return If `sink = TRUE`, a character vector containing LaTeX code to represent
+#' `v` as a polynomial. If `FALSE`, outputs code directly to console.
 #' @export
 #'
-#' @examples poly2latex(c(1:5))
+#' @examples poly2latex(1:5)
 #' #Constant function
 #' poly2latex(-7)
-#' poly2latex(round(rnorm(5), digits = 2)
+#' poly2latex(round(rnorm(5), digits = 2))
 poly2latex <- function(v,
                        sym = "t",
                        dir = "forward",
