@@ -16,6 +16,11 @@
 #' document, call the function in a chunk with  the `results = "asis"` option.
 #' Alternately, set sink to TRUE, store the output in an object, and call `cat`
 #' or `print_eqn` on the object in an R code chunk.
+#'
+#' Note that for PDF outputs, Rmarkdown's default maximum number of columns is
+#' 10. To prevent errors rendering matrices with _m_ > 10 columns,
+#' place `\setcounter{MaxMatrixCols}{m}` at the beginning of the document or in
+#' the LaTeX preamble.
 #' @export
 #'
 #' @examples #Large matrices are not difficult to process.

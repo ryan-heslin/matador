@@ -25,6 +25,11 @@ Latex code for printing the matrix. To render the code in an Rmarkdown
 document, call the function in a chunk with  the \code{results = "asis"} option.
 Alternately, set sink to TRUE, store the output in an object, and call \code{cat}
 or \code{print_eqn} on the object in an R code chunk.
+
+Note that for PDF outputs, Rmarkdown's default maximum number of columns is
+10. To prevent errors rendering matrices with \emph{m} > 10 columns,
+place \verb{\\setcounter\{MaxMatrixCols\}\{m\}} at the beginning of the document or in
+the LaTeX preamble.
 }
 \description{
 This function converts an R matrix object into LaTeX code for
