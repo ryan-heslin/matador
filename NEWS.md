@@ -1,3 +1,9 @@
+#matador 1.4.2
+*Added new functions extract_values and equation2latex
+*Optimized square
+#matador 1.4.1
+*Fixed formatting of square function error message
+*Added overlap checking to plot_decomposition function
 #matador 1.4.0
 *Added new function, plot_decomposition, to graphically display the creation
 of an orthonormal basis

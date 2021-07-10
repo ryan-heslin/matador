@@ -157,7 +157,8 @@ draw_plots <-
                        6),
         label = labels,
         parse = TRUE,
-        color = color_text
+        color = color_text,
+        check_overlap = TRUE
       )
 
   }

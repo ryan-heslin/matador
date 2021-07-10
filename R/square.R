@@ -15,10 +15,10 @@
 #' # Also works with vectors of differing length
 #' square(-10:0, 5, 2, 3, 0, 9)
 square <- function(..., byrow = FALSE) {
-  dots <- do.call("c", list(...))
+  dots <- c(...)
   len <- sqrt(length(dots))
   if (len %% 1 != 0) {
-    stop("Cannot construct square matrix from", length(dots), "elements")
+    stop("Cannot construct square matrix from ", length(dots), " elements")
   }
   matrix(dots, nrow = len, byrow = byrow)
 }
